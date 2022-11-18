@@ -1,0 +1,11 @@
+{
+	"name": "create-guilded-app-tsconfig",
+	"version": "0.1.0",
+	"main": "dist/index.js",
+	"author": "DevComp <hi@devcomp.xyz>",
+	"license": "MIT",
+	"private": true,
+	"devDependencies": {
+		"tsconfig": "workspace:*"
+	}
+}
