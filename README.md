@@ -1,3 +1,3 @@
 # create-guilded-bot
-A CLI to quickly generate guilded bot projects.
+A CLI utility & framework to create elegant guilded bots with ease. 
 <p align="center">
