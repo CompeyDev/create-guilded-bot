@@ -1,3 +1,3 @@
 # create-guilded-bot
-<div align="center">A CLI to quickly generate guilded bot projects.</div>
+A CLI to quickly generate guilded bot projects.
 <p align="center">
