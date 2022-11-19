@@ -3,6 +3,11 @@ import * as inquirer from "inquirer";
 import getPackageManager from "../lib/getPackageManager";
 import install from "../lib/installDependencies";
 import * as logger from "../utils/logger"
+import constants from "../lib/constants"
+import getConstant from "../lib/constants";
+
+const weclomeASCII = getConstant("welcomeMessage")
+console.log(weclomeASCII)
 
 inquirer
   .prompt([
