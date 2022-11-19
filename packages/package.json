@@ -1,5 +1,9 @@
 {
     "dependencies": {
-        "async": "latest"
+        "async": "latest",
+        "gradient-string": "^2.0.2"
+    },
+    "devDependencies": {
+        "@types/gradient-string": "^1.1.2"
     }
 }
