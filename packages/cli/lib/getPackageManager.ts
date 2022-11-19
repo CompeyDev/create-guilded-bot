@@ -4,7 +4,7 @@ export default function get(): string|null {
         return null;
     }
 
-    const manager= userAgent.split(" ")[0].split("/")[0];
+    const manager = userAgent.split(" ")[0].split("/")[0];
 
     return manager
 }
