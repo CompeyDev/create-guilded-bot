@@ -1,9 +1,12 @@
 {
     "dependencies": {
         "async": "latest",
-        "gradient-string": "^2.0.2"
+        "got": "11.8.1",
+        "gradient-string": "^2.0.2",
+        "unzip-stream": "^0.3.1"
     },
     "devDependencies": {
-        "@types/gradient-string": "^1.1.2"
+        "@types/gradient-string": "^1.1.2",
+        "@types/unzip-stream": "^0.3.1"
     }
 }
