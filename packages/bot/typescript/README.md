@@ -1,8 +1,8 @@
-This is a guilded bot created using [create-guilded-bot](https://github.com/CompeyDev/create-guilded-bot).
+🚀 This is a guilded bot created using [create-guilded-bot](https://github.com/CompeyDev/create-guilded-bot).
 
 ## Getting Started
 In order to run the development environment, configure your .env file with the required variables and then execute the following commands:
-```md
+```bash
 npm run dev
 # or with yarn
 yarn dev
@@ -18,4 +18,5 @@ Events can also be customized by adding files to the `events` directory correspo
 ## Learn More
 Since create-guilded-bot uses guilded.js, you can learn more from their [official docs](https://guilded.js.org/).
 
-🚀 Let's create some bots, shall we?
+
+##### ✨ This template is highly inspired by reconlx's [djs-typescript-handler](https://github.com/reconlx/djs-typescript-handler), so give them a star :)
