@@ -1,5 +1,5 @@
 import fs, { createWriteStream, mkdir, readdir, readdirSync } from "fs";
-import { copySync } from "fs-extra";
+import { copySync, removeSync } from "fs-extra";
 import * as inquirer from "inquirer";
 import getPackageManager from "../lib/getPackageManager";
 import install from "../lib/installDependencies";
@@ -52,7 +52,6 @@ inquirer
     let packageManager = getPackageManager()
 
     if (answers.flavor == "typescript") {
-      // downgit wont work, maybe use github releases?
       const TEMPLATE_DOWNLOAD_URL = "https://files.devcomp.xyz/r/create-guilded-app_ts.zip"
 
       const start = () => {
@@ -61,6 +60,7 @@ inquirer
           fs.createReadStream(`${answers.location}/create-guilded-bot_ts.zip`)
             .pipe(unzip.Extract({ path: `${answers.location}` }))
             .on("finish", () => {
+              removeSync(`${answers.location}/create-guilded-bot_ts.zip`)
               logger.success("🚀 Let's get started.")
             })
         });
@@ -69,9 +69,8 @@ inquirer
 
 
       start();
+
+      install(packageManager as "npm" | "pnpm" | "yarn" | null, answers.location)
     }
-
-
-    install(packageManager as "npm" | "pnpm" | "yarn" | null, answers.location)
 
   });
