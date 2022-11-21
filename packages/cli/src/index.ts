@@ -12,7 +12,7 @@ import stream from "got";
 import unzip from "unzip-stream";
 
 const weclomeASCII = getConstant("welcomeMessage")
-console.log(weclomeASCII)
+console.log(weclomeASCII) 
 
 inquirer
   .prompt([
