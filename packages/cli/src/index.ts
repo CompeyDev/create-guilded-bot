@@ -53,7 +53,7 @@ inquirer
 
     let packageManager = getPackageManager()
 
-    const start = async (TEMPLATE_DOWNLOAD_URL) => {
+    const start = async (TEMPLATE_DOWNLOAD_URL: string) => {
       const download = stream(TEMPLATE_DOWNLOAD_URL, { isStream: true }).pipe(createWriteStream(`${answers.location}/create-guilded-bot_ts.zip`));
       download.on("finish", () => {
         fs.createReadStream(`${answers.location}/create-guilded-bot_ts.zip`)
@@ -66,7 +66,7 @@ inquirer
     };
 
     if (answers.flavor == "typescript") {
-      const TEMPLATE_DOWNLOAD_URL = "https://files.devcomp.xyz/r/create-guilded-app_ts.zip"
+      const TEMPLATE_DOWNLOAD_URL = "https://files.devcomp.xyz/r/create-guilded-bot_ts.zip"
 
       start(TEMPLATE_DOWNLOAD_URL).then(() => {
         install(packageManager as "npm" | "pnpm" | "yarn" | null, answers.location)
@@ -74,7 +74,7 @@ inquirer
     }
 
     if (answers.flavor == "javascript") {
-      const TEMPLATE_DOWNLOAD_URL = "https://files.devcomp.xyz/r/create-guilded-app_js.zip"
+      const TEMPLATE_DOWNLOAD_URL = "https://files.devcomp.xyz/r/create-guilded-bot_js.zip"
 
 
       start(TEMPLATE_DOWNLOAD_URL).then(() => {
