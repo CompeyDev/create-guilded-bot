@@ -1,0 +1,22 @@
+{
+	"name": "guilded.js-javascript",
+	"version": "0.1.0",
+	"main": "src/index.js",
+	"author": "DevComp <hi@devcomp.xyz>",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"dev": "nodemon -w src/index.js",
+		"start": "node src/index.js"
+	},
+	"dependencies": {
+		"dotenv": "^16.0.3",
+		"glob": "^7.2.0",
+		"guilded.js": "^0.13.23"
+	},
+	"devDependencies": {
+		"eslint-config-custom": "workspace:*",
+		"eslint": "7.32.0",
+		"nodemon": "^2.0.20"
+	}
+}

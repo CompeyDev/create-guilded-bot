@@ -1,5 +1,5 @@
 {
   "extends": "tsconfig/default.json",
-  "include": ["**/*.ts", "environment.d.ts"],
+  "include": ["**/*.ts", "environment.d.ts", "javascript/src/index.js", "javascript/src/structures/Event.js", "javascript/src/structures/Command.js", "javascript/src/structures/Client.js", "javascript/src/events/ready.js", "javascript/src/commands/hi.js"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

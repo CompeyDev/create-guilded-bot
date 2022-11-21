@@ -23,11 +23,8 @@ export default new Command({
             interaction.ctx.reply(menu)
         } else if (options && options.length == 1) {
             let fetchedCmds = await client.getCommands()
-            console.log(fetchedCmds)
             let stringifiedCommands: string = ""
             for (let cmd in fetchedCmds) {
-                console.log(fetchedCmds[cmd]) // this only includes `help.ts` for some reason
-                console.log(fetchedCmds[cmd].name, options[0])
                 if (fetchedCmds[cmd].name == options[0]) {
                     stringifiedCommands += `${fetchedCmds[cmd].name} - ${fetchedCmds[cmd].description}`
                     const menu = new Embed({
