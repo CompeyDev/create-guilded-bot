@@ -11,9 +11,9 @@ yarn dev
 Your bot should be online.
 
 You can start editing the commands by adding/modifying files in the `commands` directory. An example help command is provided in
-`commands/help.ts`.
+`commands/help.js`.
 
-Events can also be customized by adding files to the `events` directory corresponding to the name of the event. See `events/ready.ts` for an example event.
+Events can also be customized by adding files to the `events` directory corresponding to the name of the event. See `events/ready.js` for an example event.
 
 ## Learn More
 Since create-guilded-bot uses guilded.js, you can learn more from their [official docs](https://guilded.js.org/).
