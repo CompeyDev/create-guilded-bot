@@ -1,8 +1,11 @@
 {
   "name": "create-guilded-bot",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/src/index.js",
+  "bin": {
+    "create-guilded-bot": "dist/src/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev src/index.ts",

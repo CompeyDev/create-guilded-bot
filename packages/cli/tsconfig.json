@@ -1,3 +1,6 @@
 {
-    "extends": "tsconfig/default"
+    "extends": "tsconfig/default",
+    "compilerOptions": {
+        "outDir": "dist"
+    }
 }

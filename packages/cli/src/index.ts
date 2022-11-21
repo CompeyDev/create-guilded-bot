@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import fs, { createWriteStream, mkdir, readdir, readdirSync } from "fs";
 import { copySync, removeSync } from "fs-extra";
 import * as inquirer from "inquirer";
