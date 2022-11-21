@@ -51,26 +51,33 @@ inquirer
 
     let packageManager = getPackageManager()
 
+    const start = async (TEMPLATE_DOWNLOAD_URL) => {
+      const download = stream(TEMPLATE_DOWNLOAD_URL, { isStream: true }).pipe(createWriteStream(`${answers.location}/create-guilded-bot_ts.zip`));
+      download.on("finish", () => {
+        fs.createReadStream(`${answers.location}/create-guilded-bot_ts.zip`)
+          .pipe(unzip.Extract({ path: `${answers.location}` }))
+          .on("finish", () => {
+            removeSync(`${answers.location}/create-guilded-bot_ts.zip`)
+            logger.success("🚀 Let's get started.")
+          })
+      });
+    };
+
     if (answers.flavor == "typescript") {
       const TEMPLATE_DOWNLOAD_URL = "https://files.devcomp.xyz/r/create-guilded-app_ts.zip"
 
-      const start = () => {
-        const download = stream(TEMPLATE_DOWNLOAD_URL, { isStream: true }).pipe(createWriteStream(`${answers.location}/create-guilded-bot_ts.zip`));
-        download.on("finish", () => {
-          fs.createReadStream(`${answers.location}/create-guilded-bot_ts.zip`)
-            .pipe(unzip.Extract({ path: `${answers.location}` }))
-            .on("finish", () => {
-              removeSync(`${answers.location}/create-guilded-bot_ts.zip`)
-              logger.success("🚀 Let's get started.")
-            })
-        });
-      };
+      start(TEMPLATE_DOWNLOAD_URL).then(() => {
+        install(packageManager as "npm" | "pnpm" | "yarn" | null, answers.location)
+      })
+    }
+
+    if (answers.flavor == "javascript") {
+      const TEMPLATE_DOWNLOAD_URL = "https://files.devcomp.xyz/r/create-guilded-app_js.zip"
 
 
-
-      start();
-
-      install(packageManager as "npm" | "pnpm" | "yarn" | null, answers.location)
+      start(TEMPLATE_DOWNLOAD_URL).then(() => {
+        install(packageManager as "npm" | "pnpm" | "yarn" | null, answers.location)
+      }) 
     }
 
   });
