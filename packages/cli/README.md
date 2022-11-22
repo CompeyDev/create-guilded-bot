@@ -6,11 +6,12 @@ A CLI to quickly generate & bootstrap guilded.js bot projects. This tool enables
 npx create-guilded-bot@latest
 # yarn
 yarn create guilded-bot
-# pnpm 
+# pnpm
 pnpm create guilded-bot
 ```
 
 You will be asked the following questions:
+
 ```bash
 ✔ Where should the project be initialized? … Directory
 ✔ Which flavor? … TypeScript/JavaScript
