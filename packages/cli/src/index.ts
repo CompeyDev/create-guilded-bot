@@ -10,6 +10,7 @@ import constants from "../lib/constants"
 import getConstant from "../lib/constants";
 import stream from "got";
 import unzip from "unzip-stream";
+import validateClient from "../lib/validateClient";
 
 const weclomeASCII = getConstant("welcomeMessage")
 console.log(weclomeASCII) 
@@ -33,6 +34,7 @@ inquirer
 
   ])
   .then((answers) => {
+    validateClient()
     mkdir(answers.location, (e) => {
       if (e && e.code != "EEXIST") {
         logger.error("Failed to create project directory.")
