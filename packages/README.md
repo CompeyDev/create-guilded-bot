@@ -1,4 +1,4 @@
-# `packages`
+# `📂packages`
 This directory consists of the main packages of create-guilded-bot, including the framework & the CLI.
 
 ## Development
