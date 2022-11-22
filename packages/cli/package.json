@@ -7,7 +7,7 @@
     "create-guilded-bot": "dist/src/index.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && tsc",
     "dev": "ts-node-dev ./src/index.ts",
     "start": "ts-node ./src/index.ts"
   },
