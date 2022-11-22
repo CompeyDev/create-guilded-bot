@@ -20,6 +20,18 @@ export const c = {
   welcomeMessage: gradient.rainbow.multiline(
     "                      _                         _ _     _          _        _           _   \n                     | |                       (_) |   | |        | |      | |         | |  \n   ___ _ __ ___  __ _| |_ ___ ______ __ _ _   _ _| | __| | ___  __| |______| |__   ___ | |_ \n  / __| '__/ _ \\/ _` | __/ _ \\______/ _` | | | | | |/ _` |/ _ \\/ _` |______| '_ \\ / _ \\| __|\n | (__| | |  __/ (_| | ||  __/     | (_| | |_| | | | (_| |  __/ (_| |      | |_) | (_) | |_ \n  \\___|_|  \\___|\\__,_|\\__\\___|      \\__, |\\__,_|_|_|\\__,_|\\___|\\__,_|      |_.__/ \\___/ \\__|\n                                     __/ |                                                  \n                                    |___/                                                   \n\n"
   ),
+  helpMenu: `
+  Usage: create-guilded-bot [command] [flags]
+         create-guilded-bot [ -h | --help | -v | --version ]
+
+  Generate a project:
+        new [directory]      Creates a new project in a specified directory.
+
+  Options:
+        --no-install, -n     Does not install dependencies for the generated project.
+        --interactive, -i    Run the interactive CLI interface
+  
+  `,
 } as const;
 
 const hyphen = kleur.yellow(c.word_HyphenAscii);

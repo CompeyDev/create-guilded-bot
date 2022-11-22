@@ -1,94 +1,44 @@
 #!/usr/bin/env node
 
-import fs, { createWriteStream, mkdir, readdir, readdirSync } from "fs";
-import { copySync, removeSync } from "fs-extra";
-import * as inquirer from "inquirer";
-import getPackageManager from "../lib/getPackageManager";
-import install from "../lib/installDependencies";
+import getConstant from "../utils/constants";
+import interactiveClient from "../lib/interactiveClient";
 import * as logger from "../utils/logger";
-import constants from "../lib/constants";
-import getConstant from "../lib/constants";
-import stream from "got";
-import unzip from "unzip-stream";
-import validateClient from "../lib/validateClient";
+import * as globals from "../utils/globals"
 
+
+const args = process.argv.filter((_, i: number) => {
+  return i > 1;
+});
 const weclomeASCII = getConstant("welcomeMessage");
-console.log(weclomeASCII);
+const helpMenu = getConstant("helpMenu");
 
-inquirer
-  .prompt([
-    {
-      type: "input",
-      name: "location",
-      message: "Where should the project be initialized?",
-    },
-    {
-      type: "list",
-      name: "flavor",
-      message: "Which flavor?",
-      choices: ["TypeScript", "JavaScript"],
-      filter(val) {
-        return val.toLowerCase();
-      },
-    },
-  ])
-  .then((answers) => {
-    validateClient();
-    mkdir(answers.location, (e) => {
-      if (e && e.code != "EEXIST") {
-        logger.error("Failed to create project directory.");
-        process.exit(1);
-      }
 
-      if (e) {
-        if (e.code == "EEXIST") {
-          readdir(answers.location, (_, files) => {
-            if (files.length) {
-              logger.error("Directory not empty.");
-              process.exit(1);
-            }
-          });
-        }
-      }
-    });
+if (args.length > 0) {
+  switch (args[0]) {
+    case "-h":
+    case "--help":
+    case "help":
+      console.log(weclomeASCII);
+      console.log(helpMenu);
+      break;
+    case "-i":
+    case "--interactive":
+      interactiveClient(true);
+      break;
+    case "--no-install":
+    case "-n":
+      globals.setGlobal("shouldInstall", false)
+      interactiveClient(false)
+      break;
+    default:
+      console.log(weclomeASCII);
+      process.stdout.write("  ");
+      logger.error("Unknown command.");
+      console.log(helpMenu);
+      break;
+  }
+}
 
-    let packageManager = getPackageManager();
-
-    const start = async (TEMPLATE_DOWNLOAD_URL: string) => {
-      const download = stream(TEMPLATE_DOWNLOAD_URL, { isStream: true }).pipe(
-        createWriteStream(`${answers.location}/create-guilded-bot_ts.zip`)
-      );
-      download.on("finish", () => {
-        fs.createReadStream(`${answers.location}/create-guilded-bot_ts.zip`)
-          .pipe(unzip.Extract({ path: `${answers.location}` }))
-          .on("finish", () => {
-            removeSync(`${answers.location}/create-guilded-bot_ts.zip`);
-            logger.success("🚀 Let's get started.");
-          });
-      });
-    };
-
-    if (answers.flavor == "typescript") {
-      const TEMPLATE_DOWNLOAD_URL =
-        "https://files.devcomp.xyz/r/create-guilded-bot_ts.zip";
-
-      start(TEMPLATE_DOWNLOAD_URL).then(() => {
-        install(
-          packageManager as "npm" | "pnpm" | "yarn" | null,
-          answers.location
-        );
-      });
-    }
-
-    if (answers.flavor == "javascript") {
-      const TEMPLATE_DOWNLOAD_URL =
-        "https://files.devcomp.xyz/r/create-guilded-bot_js.zip";
-
-      start(TEMPLATE_DOWNLOAD_URL).then(() => {
-        install(
-          packageManager as "npm" | "pnpm" | "yarn" | null,
-          answers.location
-        );
-      });
-    }
-  });
+if (args.length == 0) {
+  interactiveClient(true);
+}
