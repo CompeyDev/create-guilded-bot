@@ -3,15 +3,13 @@
 import getConstant from "../utils/constants";
 import interactiveClient from "../lib/interactiveClient";
 import * as logger from "../utils/logger";
-import * as globals from "../utils/globals"
-
+import * as globals from "../utils/globals";
 
 const args = process.argv.filter((_, i: number) => {
   return i > 1;
 });
 const weclomeASCII = getConstant("welcomeMessage");
 const helpMenu = getConstant("helpMenu");
-
 
 if (args.length > 0) {
   switch (args[0]) {
@@ -27,8 +25,8 @@ if (args.length > 0) {
       break;
     case "--no-install":
     case "-n":
-      globals.setGlobal("shouldInstall", false)
-      interactiveClient(false)
+      globals.setGlobal("shouldInstall", false);
+      interactiveClient(false);
       break;
     default:
       console.log(weclomeASCII);
